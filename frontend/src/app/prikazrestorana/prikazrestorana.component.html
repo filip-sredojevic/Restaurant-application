@@ -1,0 +1,119 @@
+<div class="mk3">Restoran {{restoran.naziv_restorana}}</div>
+<hr>
+<div class="container">
+    <table>
+        <tr>
+            <td>Naziv:</td><td>{{restoran.naziv_restorana}}</td>
+        </tr>
+        <tr>
+            <td>Tip:</td><td>{{restoran.tip_restorana}}</td>
+        </tr>
+        <tr>
+            <td>Adresa:</td><td>{{restoran.adresa_restorana}}</td>
+        </tr>
+        <tr>
+            <td>Telefon:</td><td>{{kontaktosoba!.telefon}}</td>
+        </tr>
+    </table>
+</div>
+
+<pre>
+
+</pre>
+<div class="mk3" *ngIf="komentari.length>0">Komentari</div>
+<pre>
+</pre>
+<div class="container">
+<ul type="square">
+  <li *ngFor="let x of komentari"> {{x}}</li>
+</ul>
+</div>
+<div class="container" style="color: green;" *ngIf="komentari.length==0">Nema komentara!</div>
+<pre>
+
+
+</pre>
+<div class="mk3">Jelovnik</div>
+<pre>
+</pre>
+<div class="container">
+    <table border="1" style="text-align: center;">
+        <th>Naziv</th> <th>Sastojci</th> <th>Cena</th> <th>Slika</th> <th>Kolicina</th>
+        <tr *ngFor="let x of jelarestorana">
+            <td> {{x.naziv_jela}}</td> <td>{{x.sastojci}}</td> <td>{{x.cena}}</td> <td><img src={{dohvsliku(x)}} width="50" height="50" alt="Naziv slike"></td> 
+            <td><input type="number" min="1"  [(ngModel)]="x.kolicina"></td>
+            <td> <button (click)="dodajukorpu(x)">Dodaj u korpu</button></td>
+        </tr>
+    </table>
+</div> 
+<pre>
+
+
+</pre>
+<div class="mk3"><button (click)="pogledajkorpu()">Pogledaj korpu</button></div>
+<pre>
+
+</pre>
+<div class="container" *ngIf="poglkor && sadrzajkorpe.length>0">
+    <table border="1" style="text-align: center;">
+        <th>Naziv</th> <th>Sastojci</th> <th>Cena</th> <th>Slika</th> <th>Kolicina</th>
+        <tr *ngFor="let x of sadrzajkorpe">
+            <td>{{x.naziv_jela}}</td>  <td>{{x.sastojci}}</td> <td>{{x.cena}}</td> <td><img src={{dohvsliku(x)}} width="50" height="50" alt="Naziv slike"></td> <td>{{x.kolicina}}</td>
+            <td><button (click)="izbaci(x)">Izbaci</button></td>
+        </tr>
+    </table>
+</div>
+<div class="container" *ngIf="poglkor && sadrzajkorpe.length==0" style="color: red; font-size: larger;">Korpa je prazna!</div>
+<pre *ngIf="poglkor">
+
+
+</pre>
+<div class="container" *ngIf="poglkor"><button (click)="naruci()">Naruci</button></div>
+<pre>
+
+
+
+</pre>
+<div class="mk3"> Rezervisite: <select [(ngModel)]="nacinrez" (click)="formapanel()"><option>Forma</option><option>Panel</option></select></div>
+<pre>
+
+
+
+</pre>
+<div class="container" *ngIf="nacinrez==helper"><table>
+    <tr>
+  <td>Broj osoba:</td><td><input type="text" [(ngModel)]="brosoba"></td> 
+    </tr>
+<tr>
+    <td>Datum:</td><td><input type="date" [(ngModel)]="datum"></td>
+  </tr>
+  <tr>
+    <td>Vreme:</td><td><input type="time" [(ngModel)]="vreme"></td>
+  </tr>
+  <tr>
+   <td>Dodatno: </td> <td> <input type="text" [(ngModel)]="dodatno"> </td>
+  </tr>
+  <tr>
+    <td><button (click)="rezervisi()">Rezervisi</button></td>
+  </tr>
+
+</table></div>
+<div class="container" *ngIf="nacinrez==helper && h1"  style="color: green;">{{message}}</div>
+<div class="container" *ngIf="nacinrez==helper && !h1"  style="color: red;">{{message}}</div>
+<pre>
+
+
+    
+</pre>
+<div class="container" ><app-map></app-map></div>
+<pre>
+
+
+
+
+
+
+
+</pre>
+<hr>
+<div class="container"><button (click)="pocetna()">Pocetna</button></div>

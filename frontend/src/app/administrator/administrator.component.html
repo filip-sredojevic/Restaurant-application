@@ -1,0 +1,76 @@
+<div class="mk3">Administrator {{ulogovan_administrator.korisnicko_ime}} </div> 
+<pre>
+</pre>
+   <hr> 
+   <button  (click)="promeniLozinku()" style="margin-right: 10px;">Promena lozinke</button>  <button (click)="postpodrslikubazu()"style="margin-right: auto;">Podrazumevana slika</button>  <span class="container"> <button (click)="zahtev()" style="margin-right: 10px;">Zahtevi</button> <button (click)="gost()" style="margin-right: 10px;">Gosti</button> <button (click)="konobar()" style="margin-right: 10px;">Konobari</button> <button (click)="restoran()">Restorani</button></span>
+<pre>
+</pre>
+<span  class="container" style="font-weight: bold; font-style: normal;"> {{izabrano}} </span>
+<pre>
+
+    
+</pre>               
+                                      
+ <div class="container" *ngIf="izabrano==h1">                                         
+<table border="1" *ngIf="zahtevi.length>0"  style="text-align: center;">
+    <th>Korisnicko ime</th> <th> Ime</th> <th>Prezime</th> <th>Mejl</th> <th>Telefon</th> <th>Razresi</th>
+    <tr *ngFor="let x of zahtevi">
+        
+        <td>{{x.korisnicko_ime}}</td> <td>{{x.ime}}</td> <td>{{x.prezime}}</td> <td>{{x.mejl}}</td> <td>{{x.telefon}} </td>  <td><button (click)="prihvati(x)" style="margin-right: 5px;">Prihvati</button><button (click)="odbij(x)">Odbij</button>  </td> <td><button (click)="azuriraj(x)">Azuriraj podatke</button></td>
+    </tr>
+</table>
+<span *ngIf="zahtevi.length==0" style="color: green; font-weight: bold;"> U sistemu nema zahteva za pristup sistemu!</span>
+</div>
+<div class="container" *ngIf="izabrano==h2">                                         
+    <table *ngIf="gosti.length>0" border="1"  style="text-align: center;">
+        <th>Korisnicko ime</th> <th> Ime</th> <th>Prezime</th> <th>Mejl</th> <th>Telefon</th> 
+        <tr *ngFor="let x of gosti">
+            
+            <td>{{x.korisnicko_ime}}</td> <td>{{x.ime}}</td> <td>{{x.prezime}}</td> <td>{{x.mejl}}</td> <td>{{x.telefon}} </td> <td><button (click)="aktiviraj(x)" [disabled]="x.blokiran==0">Aktiviraj</button></td> <td><button (click)="deaktiviraj(x)" [disabled]="x.blokiran==1">Deaktiviraj</button></td> <td><button (click)="azuriraj(x)">Azuriraj podatke</button></td>
+    </table>
+    <span *ngIf="gosti.length==0" style="color: red; font-weight: bold;"> U sistemu nema gostiju!</span>
+</div>
+
+   
+        <div class="container" *ngIf="izabrano==h3">                                         
+            <table border="1" *ngIf="konobari.length>0"  style="text-align: center;">
+                <th>Korisnicko ime</th> <th> Ime</th> <th>Prezime</th> <th>Mejl</th> <th>Telefon</th> 
+                <tr *ngFor="let x of konobari">
+                    <td>{{x.korisnicko_ime}}</td> <td>{{x.ime}}</td> <td>{{x.prezime}}</td> <td>{{x.mejl}}</td> <td>{{x.telefon}} </td>
+                </tr>
+                
+            </table>
+         <span *ngIf="konobari.length==0" style="color: red; font-weight: bold;"> U sistemu nema konobara!</span>
+         
+        </div>  
+        <div class="container" *ngIf="izabrano==h4">
+            <table border="1" *ngIf="restorani.length>0"  style="text-align: center;">
+             <th>Id</th><th>Naziv</th><th>Tip</th><th>Adresa</th><th>Opis</th><th>Kontakt osoba</th>
+             <tr *ngFor="let x of restorani">
+                <td>{{x.id_restorana}}</td> <td>{{x.naziv_restorana}}</td> <td>{{x.tip_restorana}}</td><td>{{x.adresa_restorana}}</td><td>{{x.opis_restorana}}</td><td>{{x.kontakt_osoba}}</td>
+             </tr>
+            </table>
+            <span class="container" *ngIf="restorani.length==0" style="color: red; font-weight: bold;"> U sistemu nema restorana!</span>
+        </div> 
+  <pre>
+  </pre>
+  <div class="container" *ngIf="izabrano==h3"> <button (click)="dodajkonobara()">Dodaj konobara</button></div>    
+  <div class="container" *ngIf="izabrano==h4"> <button (click)="dodajrestoran()">Dodaj restoran</button></div>
+
+    <pre>
+
+
+    </pre>
+
+
+<div class="container" style="color: green;">{{message}}</div>
+<pre>
+
+
+
+
+    
+
+
+    <hr> <div class="container"><button (click)="pocetna()" style="margin-right: 10px;">Pocetna</button> <button (click)="izlogujse()">Izloguj se</button></div>
+</pre>

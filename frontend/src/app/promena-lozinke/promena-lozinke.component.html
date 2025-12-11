@@ -1,0 +1,58 @@
+<div class="mk3">Promena lozinke</div>
+<hr>
+<div class="container">Promeni lozinku koristeci: <select [(ngModel)]="nacinpromene"><option>stara lozinka</option><option>bezbedonosno pitanje</option></select></div>
+<pre>
+
+
+</pre>
+<span *ngIf="nacinpromene==h1">
+<div class="container">
+
+    <table>
+        <tr>
+            <td>Korisnicko ime:</td><td><input type="text" [(ngModel)]="kime"></td> <td><button (click)="korime()">OK</button></td>
+        </tr>
+        <tr *ngIf="kimeok">
+            <td>Stara lozinka:</td> <td><input type="password" [(ngModel)]="staralozinka" (blur)="stara()"></td>
+        </tr>
+        <tr *ngIf="staraok">
+            <td>Nova lozinka:</td> <td> <input type="password" [(ngModel)]="novalozinka" ></td>
+        </tr>
+        <tr *ngIf="staraok">
+            <td>Nova lozinka (ponovo):</td> <td> <input type="password" [(ngModel)]="novalozinkaponovo" [disabled]="novalozinka==h3" (blur)="novaponovolozinka()"></td>
+        </tr>
+        
+            
+    </table>
+</div><pre>
+
+
+</pre>
+<div class="container" style="color: red;" >{{message}}</div>
+<div class="container" *ngIf="staraok && novaok"><button (click)="promenilozinku()">Promeni lozinku</button></div></span>
+<span *ngIf="nacinpromene==h2">
+<div class="container">
+    <table>
+        <tr>
+        <td>Korisnicko ime:</td><td><input type="text" [(ngModel)]="kime"></td> <td><button (click)="korime()">OK</button></td>
+    </tr>
+     <tr *ngIf="kimeok">
+        <td>{{this.korisnik.bezbedonosno_pitanje}}</td> <td><input type="text" [(ngModel)]="odg"></td> <td><button (click)="odgovori()">OK</button></td>
+     </tr>
+     <tr *ngIf="odgok">
+          <td>Nova lozinka:</td> <td><input type="password" [(ngModel)]="nl"></td>
+     </tr>
+     <tr *ngIf="odgok">
+        <td>Nova lozinka (ponovo):</td> <td><input type="password" [(ngModel)]="nlp"></td>
+     </tr>
+     <tr *ngIf="odgok">
+        <td><button (click)="proloz()">Promeni lozinku</button></td>
+     </tr>
+    </table>
+</div>
+<pre>
+
+
+</pre>
+<div class="container" style="color: red;" >{{message}}</div>
+</span>

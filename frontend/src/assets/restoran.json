@@ -1,0 +1,10 @@
+{
+    "stolovi": [
+      { "x": 100, "y": 100, "brojmesta": 2},
+      { "x": 400, "y": 100, "brojmesta": 4},
+      { "x": 250, "y": 190, "brojmesta": 9},
+      { "x": 250, "y": 310, "brojmesta": 10},
+      { "x": 100, "y": 350, "brojmesta": 10},
+      { "x": 400, "y": 350, "brojmesta": 3}
+    ]
+  }

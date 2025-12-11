@@ -1,0 +1,38 @@
+<h2><div class="mk3">
+Prijava <br>
+</div>
+<pre>
+</pre>
+</h2>
+<pre>
+</pre>
+<div class="container">
+   
+    <table>
+        <tr>
+           <td> Korisnicko ime: </td> <td> <input type="text" [(ngModel)]="korisnicko_ime" required><br></td> 
+        </tr>
+        <tr>
+           <td> Lozinka:  </td> <td><input type="password" [(ngModel)]="lozinka" required> </td>
+        </tr>
+        <tr> <pre> <td><button (click)="ulogujse()">OK</button> <button [disabled]="tipkorisnika==hel" (click)="registrujse()" >Registruj se</button></td> </pre> </tr>
+        <tr style="color: red;"> {{message}}</tr>
+    </table>
+</div>
+    <pre>
+
+
+
+
+
+
+
+    </pre>
+<hr>
+<div class="container"><button (click)="pocetna()">Pocetna</button></div>
+
+
+
+
+
+

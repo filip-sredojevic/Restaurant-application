@@ -1,0 +1,77 @@
+<div class="container"><h2>Dobro dosli na web stranicu restorana  "Kutak dobre hrane"</h2></div> <hr>
+<div><button (click)="promenilozinku()">Promena lozinke</button></div>
+<div class="container">Prijavite se kao <select [(ngModel)]="tipkorisnika" (click)="login()">
+
+    <option> administrator</option><option >konobar</option><option>gost</option>
+</select>
+</div>
+<pre>
+</pre>
+<div class="container" *ngIf="tipkorisnika==helper">
+<span>Unesite administratorsku sifru: <input type="password" [(ngModel)]="sifra"> </span><br>
+<button (click)="proveri()">Potvrdi</button><br>
+</div>
+<div class="container">
+<span style="color: red;">{{message}}</span>
+</div>
+<hr>
+<div class="container">
+    <table>
+        <tr>
+        <td>Broj gostiju: {{brojGostiju}}</td> 
+        </tr>
+<tr>
+    <td>Broj restorana: {{restorani.length}}</td>
+</tr>
+<tr>
+    <td style=>Broj rezervacija (24h, 7D, 1M) = ({{n24h}},{{n7d}},{{n1m}})</td> 
+</tr>
+</table>
+</div>
+<div class="container">Restorani</div>
+<div class="container">
+<table border ="1"*ngIf="restorani.length>0">
+    <th>Naziv</th> <th>Tip</th><th>Adresa</th><th>Konobari</th> 
+     <tr *ngFor="let x of restorani">
+        <td>{{x.naziv_restorana}}</td> <td>{{x.tip_restorana}}</td> <td>{{x.adresa_restorana}}</td> <td> 
+            <select>
+              <ng-container *ngFor="let y of konobari">
+                <option *ngIf="proveriDaLiKonobarRadiUrestoranu(x, y)">{{ y.ime }} {{y.prezime}}</option>
+              </ng-container>
+            </select>
+          </td>
+    </tr>
+    
+</table>
+</div>
+<pre>
+
+</pre>
+<div class="container">
+    <table>
+        <tr>
+            <td>Sortiraj rastuce po: </td> <td>  <select [(ngModel)]="nacinsortiranja"  style="margin-right: 10px"><option>naziv</option><option>tip</option><option>adresa</option></select> </td> <td><button (click)="sortirajRastuce()">OK</button></td>
+        </tr>
+        <tr>
+            <td>Sortiraj opadajuce po: </td> <td>  <select [(ngModel)]="nacinsortiranja"  style="margin-right: 10px"><option>naziv</option><option>tip</option><option>adresa</option></select> </td> <td><button (click)="sortirajOpadajuce()">OK</button></td>
+        </tr>
+    </table>
+</div>
+<pre>
+</pre>
+<div class="container">Pretraga</div>
+<div class="container" style="font-size: smaller;">
+    <table>
+        <tr>
+            <td>Ime:</td> <td><input type="text" [(ngModel)]="pi"></td>
+        </tr>
+        <tr>
+            <td>Tip:</td> <td><input type="text" [(ngModel)]="pt"></td>
+        </tr>
+        <tr>
+            <td>Adresa:</td> <td><input type="text" [(ngModel)]="pa"></td>
+        </tr>
+    </table>
+   
+</div>
+<div class="container" style="font-size: smaller;"><button (click)="pretrazi()">Pretrazi</button></div>

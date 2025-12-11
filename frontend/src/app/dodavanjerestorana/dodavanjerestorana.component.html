@@ -1,0 +1,82 @@
+<div class="mk3">Dodavanje restorana</div><br>
+<hr>
+<div class="container">
+    <table>
+        <tr>
+            <td>Naziv:</td><input type="text" [(ngModel)]="naziv">
+        </tr>
+        <tr>
+            <td>Tip:</td><td><select [(ngModel)]="tip"><option>domaca kuhinja</option><option>kineski</option><option>japanski</option><option>indijski</option></select></td>
+        </tr>
+        <tr>
+            <td>Adresa:</td><td><input type="text" [(ngModel)]="adresa"></td>
+        </tr>
+        <tr>
+            <td>Opis:</td><td><input type="text" [(ngModel)]="opis"></td>
+        </tr>
+        <tr>
+          <td>Kontakt osoba:</td><td><input type="text" [(ngModel)]="kontakt_osoba"></td>
+        </tr>
+        <tr>
+          <td> Broj mesta za 1. stolom:</td> <td><input type="text" [(ngModel)]="bm1"></td>
+        </tr>
+        <tr>
+          <td>  Broj mesta za 2. stolom:</td><td><input type="text" [(ngModel)]="bm2"></td>
+        </tr>
+        <tr>
+          <td> Broj mesta za 3. stolom:</td> <td><input type="text" [(ngModel)]="bm3"></td>
+        </tr>
+        <tr>
+          <td> Broj mesta za 4. stolom:</td> <td><input type="text" [(ngModel)]="bm4"></td>
+        </tr>
+        <tr>
+          <td>  Broj mesta za 5. stolom:</td><td><input type="text" [(ngModel)]="bm5"></td>
+        </tr>
+        <tr>
+          <td> Broj mesta za 6. stolom:</td> <td><input type="text" [(ngModel)]="bm6"></td>
+        </tr>
+
+        <tr>
+            <td>Radno vreme :</td><td><input type="text" [(ngModel)]="radnovreme"></td>
+          </tr>
+          <tr>
+            <td>Koristi JSON za raspored stolova</td><td><input type="checkbox" [(ngModel)]="korjson"></td>
+          </tr>
+    </table>
+
+</div>
+<pre>
+
+
+</pre>
+<div class="container">
+<canvas #myCanvas width="500" height="500"  (click)="handleCanvasClick($event)" style="border:1px solid black;">Cao</canvas>
+</div>
+<pre>
+            
+</pre>
+<div class="container" style="color: red;" *ngIf="helper==0">{{message}}</div>
+<div class="container" style="color: green;" *ngIf="helper==1">{{message}}</div><pre>
+
+
+
+</pre>
+<div class="container"><button (click)="dodajrestoran()">Dodaj restoran</button></div>
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <hr> <div class="container"><button (click)="nazad()" style="margin-right: 50px;">Nazad</button><button (click)="pocetna()" style="margin-right: 10px;">Pocetna</button>
+        </div>
+</pre>

@@ -1,0 +1,31 @@
+<div class="mk3">Azuriranje podataka korisnika {{kosemenja.korisnicko_ime}}</div>
+<hr>
+<div class="container">
+     <table>
+        <tr>
+            <td>Ime:</td> <td><input type="text" [(ngModel)]="novoime" placeholder={{kosemenja.ime}}></td>
+        </tr>
+        <tr>
+            <td>Prezime:</td> <td><input type="text" [(ngModel)]="novoprezime" placeholder={{kosemenja.prezime}}></td>
+        </tr>
+        <tr>
+            <td>Adresa:</td> <td><input type="text" [(ngModel)]="novaadresa" placeholder={{kosemenja.adresa}}></td>
+        </tr>
+        <tr>
+            <td>Mejl:</td> <td><input type="text" [(ngModel)]="novmejl" placeholder={{kosemenja.mejl}}></td>
+        </tr>
+        <tr>
+            <td>Telefon:</td> <td><input type="text" [(ngModel)]="novtelefon" placeholder={{kosemenja.telefon}}></td>
+        </tr>
+        <tr>
+            <td>BKK:</td> <td><input type="password" [(ngModel)]="novbroj_kkartice" placeholder={{kosemenja.broj_kkartice}}></td>
+        </tr>
+        <tr *ngIf="komenja==h1">
+            <td>Profilna slika:</td> <td> <input type="file" id="image" name="image" (change)="onFileSelected($event)" required></td>
+        </tr>
+        <tr> <pre> <td><button (click)="posalji()">OK</button></td></pre> </tr>
+     </table>
+</div>
+<div [class.container]="helper==1"> 
+
+<pre [class.mk1]="helper==0" [class.mk2]="helper==1">                              {{message}}</pre></div>

@@ -1,0 +1,52 @@
+<div class="mk3">{{restoran.naziv_restorana}}</div>
+<hr>
+<div class="container" *ngIf="korisnik.tip==hel">
+Datum: <input type="date" [(ngModel)]="datum" style="margin-right: 20px;">
+Vreme: <input type="time" [(ngModel)]="vreme"><br>
+</div>
+<pre>
+    
+</pre>
+<div class="container"><button (click)="crtaj()">Prikazi </button></div>
+<pre>
+
+
+</pre>
+<div class="container" *ngIf="korisnik.tip!=hel"><button *ngIf="odabranarezervacija.nacin_rezervacije==p" (click)="prihvati()" style="margin-right: 10px;" >Prihvati</button><button (click)="odbij()">Odbij</button></div>
+
+<pre>
+
+
+</pre>
+<div class="container" >
+    <canvas #myCanvas width="500" height="500" (click)="handleCanvasClick($event)"></canvas>
+</div><br>
+<pre>
+
+</pre>
+<div class="container" *ngIf="unesibrosoba">Rezervacija je za broj osoba: <input type="text" [(ngModel)]="brosoba"></div>
+<pre>
+
+</pre>
+<div class="container" *ngIf="unesibrosoba"><button (click)="rezervisi()">Rezervisi</button></div>
+<pre>
+
+
+</pre>
+<div class="container" *ngIf="!zelena" style="color: red;">{{message}}</div>
+<div class="container" *ngIf="zelena" style="color: green;">{{message}}</div>
+<pre>
+
+
+
+
+
+
+    
+
+
+
+
+</pre>
+<hr>
+<div class="container"><button (click)="pocetna()" style="margin-right: 10px;">Pocetna</button></div>

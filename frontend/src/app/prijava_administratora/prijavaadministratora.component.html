@@ -1,0 +1,23 @@
+<h2><div class="mk3">
+    Prijava administratora:   <br>
+  </div>
+  <pre>
+  </pre>
+  </h2>
+  <pre>
+  </pre>
+  <div class="container">
+     
+      <table>
+          <tr>
+             <td> Korisnicko ime: </td> <td> <input type="text" [(ngModel)]="korisnicko_ime" required><br></td> 
+          </tr>
+          <tr>
+             <td> Lozinka:  </td> <td><input type="password" [(ngModel)]="lozinka" required> </td>
+          </tr>
+          <tr>
+             <td> <button (click)="posalji()">OK</button> </td>
+          </tr>
+          <tr style="color: red;">{{message}}</tr>
+</table>
+     

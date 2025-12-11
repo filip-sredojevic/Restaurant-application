@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files*/
+.container {
+   display: flex;
+  justify-content: center;
+}
+
+.mk1{
+  color: red;
+}
+
+.mk2 {
+  color: green;
+
+}
+
+.mk3 {
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.star {
+ 
+    color: orange; /* Promijenite boju zvijezda prema potrebi */
+    font-size: 24px; /* Prilagodite veličinu zvijezda */
+  
+}
+.star-filled {
+  color: gold; /* boja zvezdica koje su ocenjene */
+}
+
+.star-highlighted {
+  color: gold; /* boja zvezdica koje su pređene mišem */
+}
+
+.star-empty {
+  color: #ccc; /* boja zvezdica koje nisu ocenjene */
+}

@@ -1,0 +1,70 @@
+<div class="mk3">Dodavanje konobara</div><br>
+<hr>
+<div class="container">
+     
+    <table>
+      <tr>
+          <td> Korisnicko ime:  </td> <td><input type="text" autocomplete="off" [(ngModel)]="korisnicko_ime"> </td>
+      </tr> 
+          <tr>
+              <td> Lozinka:</td> <td><input type="password" [(ngModel)]="lozinka" required> </td>
+            </tr>
+        
+        <tr>
+          <td> Bezbedonosno pitanje:</td> <td><input type="text" [(ngModel)]="bezbedonosno_pitanje" required> </td>
+        </tr>
+        <tr>
+          <td> Odgovor:</td> <td><input type="text" [(ngModel)]="odgovor" required> </td>
+        </tr>
+  
+        <tr>
+           <td>Ime: </td> <td> <input type="text"  autocomplete="off" [(ngModel)]="ime" required><br></td> 
+        </tr>
+        <tr>
+           <td> Prezime:  </td> <td><input type="text" [(ngModel)]="prezime" required> </td>
+        </tr>
+        <tr>
+          <td>Pol</td> <td>M <input type="radio" [(ngModel)]="pol" name="r1" value="muski"> Z <input type="radio" [(ngModel)]="pol" value="zenski"></td>
+        </tr>
+        <tr>
+          <td> Adresa:</td> <td><input type="text" [(ngModel)]="adresa" required> </td>
+        </tr>
+        <tr>
+          <td> Telefon:</td> <td><input type="text" [(ngModel)]="telefon" required> </td>
+        </tr>
+        <tr>
+          <td> Email:</td> <td><input type="text" [(ngModel)]="mejl" required> </td>
+        </tr>
+        <tr>
+          <td> Broj kreditne kartice:</td> <td><input type="password" [(ngModel)]="brojkreditnekartice" required> </td>
+        </tr> 
+        <tr>
+          <td>Restoran:</td> <td><input type="text" [(ngModel)]="idres" required> </td>
+        </tr>   
+        <tr>
+        <td>Profilna slika:</td> <td> <input type="file" id="image" name="image" (change)="onFileSelected($event)" required></td>
+        </tr>
+        <tr> <pre> <td><button (click)="posalji()">OK</button></td></pre> </tr>
+    
+    </table>
+</div>
+<pre>                                          <span [class.mk1]="helper==0" [class.mk2]="helper==1"> {{message}}</span></pre>
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<hr>
+<div class="container"><button (click)="nazad()" style="margin-right: 50px;">Nazad</button><button (click)="pocetna()">Pocetna</button></div>

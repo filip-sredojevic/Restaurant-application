@@ -1,0 +1,14 @@
+star-list {
+  list-style-type: none; /* Sakrij podrazumevanu oznaku liste */
+}
+
+.star-list li {
+  position: relative; /* Postavi relativnu poziciju za svaki element liste */
+  padding-left: 20px; /* Dodaj padding sa leve strane */
+}
+
+.star-list li:before {
+  content: "★"; /* Postavi sadržaj pseudo-elementa na zvezdicu */
+  position: absolute; /* Postavi apsolutnu poziciju u odnosu na roditeljski element */
+  left: 0; /* Postavi poziciju pseudo-elementa na levoj strani */
+}

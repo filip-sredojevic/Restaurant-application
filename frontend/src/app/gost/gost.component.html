@@ -1,0 +1,208 @@
+<div class="mk3"> Gost {{ulogovan_gost.korisnicko_ime}} </div>
+<hr>
+<pre>
+</pre>
+
+
+ <span class="container"><button (click)="pro()" style="margin-right: 10px;">Profil</button><button (click)="res()" style="margin-right: 10px;">Restorani</button><button (click)="rez()" style="margin-right: 10px;">Rezervacije</button><button (click)="doshr()">Dostava hrane</button></span>
+<div class="container" *ngIf="vrstamenija==h1"><img [src]="imageData" alt="Image" width="160" height="120"></div>
+<div class="container"*ngIf="vrstamenija==h1">
+    <table>
+        <tr>
+            <td>Ime:</td> <td>{{ulogovan_gost.ime}}</td>
+        </tr>
+        <tr>
+            <td>Prezime:</td> <td>{{ulogovan_gost.prezime}}</td>
+        </tr>
+        <tr>
+            <td>Adresa:</td> <td>{{ulogovan_gost.adresa}}</td>
+        </tr>
+        <tr>
+            <td>Mejl:</td> <td>{{ulogovan_gost.mejl}}</td>
+        </tr>
+        <tr>
+            <td>BKK:</td> <td>{{ulogovan_gost.broj_kkartice}}</td>
+        </tr>
+    </table>
+</div>
+
+
+<pre>
+</pre>
+
+<div class="container" *ngIf="vrstamenija==h2">Restorani</div>
+<pre>
+</pre>
+<div class="container" *ngIf="vrstamenija==h2">
+<table border ="1"*ngIf="restorani.length>0 && vrstamenija==h2">
+    <th>Naziv</th> <th>Tip</th><th>Adresa</th><th>Konobari</th> <th>Ocena</th> <th>Ocena</th>
+     <tr *ngFor="let x of restorani">
+        <td><a routerLink="../prikazrestorana" (click)="prikazirestoran(x)">{{x.naziv_restorana}}</a></td> <td>{{x.tip_restorana}}</td> <td>{{x.adresa_restorana}}</td> <td>
+            <select>
+              <ng-container *ngFor="let y of konobari">
+                <option *ngIf="proveriDaLiKonobarRadiUrestoranu(x, y)">{{ y.ime }} {{y.prezime}}</option>
+              </ng-container>
+            </select>
+          </td>
+          <td>{{foo(x)}}</td><td> <span *ngFor="let i of [].constructor(fooRound(x)); let index = index" class="star">&#9733;</span></td>
+    </tr>
+    
+</table>
+</div>
+<pre>
+
+</pre>
+<div class="container" *ngIf="restorani.length>0 && vrstamenija==h2" >
+    <table>
+        <tr>
+            <td>Sortiraj rastuce po: </td> <td>  <select [(ngModel)]="nacinsortiranja"  style="margin-right: 10px"><option>naziv</option><option>tip</option><option>adresa</option></select> </td> <td><button (click)="sortirajRastuce()">OK</button></td>
+        </tr>
+        <tr>
+            <td>Sortiraj opadajuce po: </td> <td>  <select [(ngModel)]="nacinsortiranja"  style="margin-right: 10px"><option>naziv</option><option>tip</option><option>adresa</option></select> </td> <td><button (click)="sortirajOpadajuce()">OK</button></td>
+        </tr>
+    </table>
+</div>
+<pre>
+</pre>
+<div class="container" *ngIf="vrstamenija==h2">Pretraga</div>
+<div class="container" style="font-size: smaller;" *ngIf="vrstamenija==h2">
+    <table>
+        <tr>
+            <td>Ime:</td> <td><input type="text" [(ngModel)]="pi"></td>
+        </tr>
+        <tr>
+            <td>Tip:</td> <td><input type="text" [(ngModel)]="pt"></td>
+        </tr>
+        <tr>
+            <td>Adresa:</td> <td><input type="text" [(ngModel)]="pa"></td>
+        </tr>
+    </table>
+   
+</div>
+<div *ngIf="vrstamenija==h2" class="container" style="font-size: smaller;"><button (click)="pretrazi()">Pretrazi</button></div>
+
+
+<div class="mk3" *ngIf="vrstamenija==h3">Aktuelne rezervacije</div>
+<pre>
+
+</pre>
+<div class="container" *ngIf="aktuelnerezervacije.length>0 && vrstamenija==h3">
+
+<table  border="1" style="text-align: center;">
+    <th>Datum</th> <th>Restoran</th> <th>Adresa</th> 
+    <tr *ngFor="let x of aktuelnerezervacije" >
+      <td>{{splituj(x.datum)}}</td> <td>{{dohvatiimerestorana(x.id_res)}}</td> <td>{{dohvatiadresurestorana(x.id_res)}}</td><td><button (click)="otkazirez(x)" [disabled]="mozedaotkaze(x)">Otkazi</button></td>
+    </tr>
+</table>
+</div>
+<div class="container" *ngIf="aktuelnerezervacije.length==0 && vrstamenija==h3" style="color: green">Nema akutelnih rezervacija</div>
+<pre>
+
+
+</pre>
+<div class="mk3" *ngIf="vrstamenija==h4">Aktuelne dostave</div>
+<pre>
+</pre>
+<div class="container" *ngIf="vrstamenija==h4">
+    <table border="1" style="text-align: center;">
+        <th>Naziv restorana</th> <th>Status dostave</th> <th>Procenjeno vreme dostave [min]</th>
+        <tr *ngFor="let x of dostave">
+            <td>{{x.naziv_restorana}}</td> <td>{{x.status}}</td> <td>{{x.vreme_dostave}}</td>
+        </tr>
+    </table>
+    </div>
+<pre>
+
+
+</pre>
+
+<div class="mk3" *ngIf="vrstamenija==h4">Arhiva dostava</div>
+<pre>
+</pre>
+<div class="container" *ngIf="vrstamenija==h4">
+<table border="1" style="text-align: center;">
+    <th>Datum dostave</th> <th>Iznos</th> <th>Naziv restorana</th>
+    <tr *ngFor="let x of arhivadostava">
+        <td>{{x.datum_dostave}}</td> <td>{{x.iznos}}</td> <td>{{x.naziv_restorana}}</td>
+    </tr>
+</table>
+</div>
+<pre>
+
+
+</pre>
+
+
+
+<div class="mk3" *ngIf="vrstamenija==h3 && vrstamenija==h3">Istekle rezervacije</div>
+<pre>
+
+</pre>
+<div class="container" *ngIf="neaktuelenerezervacije.length>0 && vrstamenija==h3">
+
+<table  border="1" style="text-align: center;">
+    <th>Datum</th> <th>Restoran</th> <th>Komentar</th> <th>Ocena</th> 
+    <tr *ngFor="let x of neaktuelenerezervacije" >
+      <td>{{splituj(x.datum)}}</td> <td>{{dohvatiimerestorana(x.id_res)}}</td> <td>{{x.komentar}}</td>  <td>{{x.ocena}}</td> <td><button (click)="pokaziFormu(x)" [disabled]="mozedaoceni(x)">Oceni</button></td>
+    </tr>                                                                                                                                                             
+</table>
+</div>
+<div class="container" *ngIf="neaktuelenerezervacije.length==0 && vrstamenija==h3" style="color: green">Nema isteklih rezervacija</div>
+
+
+
+
+
+<pre>
+
+</pre>
+<div class="container" *ngIf="vrstamenija==h1"><button (click)="azurirajpodatke()">Azuriraj podatke</button></div>
+<pre>
+
+
+
+</pre>
+<div id="nesto" class="mk3" *ngIf="pokazi"> Komentar & ocena</div>
+<pre>
+
+</pre>
+<div  *ngIf="pokazi" class="container">
+    <table>
+        <tr>
+            <td>Komentar: </td> <td> <input type="text" [(ngModel)]="komentar"></td>
+        </tr>
+        <tr>
+            <td>Ocena:</td> <td>
+                <span (mouseenter)="highlightStars(1)" (mouseleave)="resetStars()" (click)="rateStar(1)" [class]="starClass(1)">&#9733;</span>
+                <span (mouseenter)="highlightStars(2)" (mouseleave)="resetStars()" (click)="rateStar(2)" [class]="starClass(2)">&#9733;</span>
+                <span (mouseenter)="highlightStars(3)" (mouseleave)="resetStars()" (click)="rateStar(3)" [class]="starClass(3)">&#9733;</span>
+                <span (mouseenter)="highlightStars(4)" (mouseleave)="resetStars()" (click)="rateStar(4)" [class]="starClass(4)">&#9733;</span>
+                <span (mouseenter)="highlightStars(5)" (mouseleave)="resetStars()" (click)="rateStar(5)" [class]="starClass(5)">&#9733;</span>
+             </td>
+        </tr>
+        <tr>
+            <button (click)="oceni()">OK</button>
+        </tr>
+    </table>
+</div>
+
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<hr>
+<div class="container"id="nesto"><button (click)="pocetna()" style="margin-right: 10px;">Pocetna</button><button (click)="izlogujse()">Izloguj se</button></div>
+

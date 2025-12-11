@@ -1,0 +1,81 @@
+<div class="mk3"> Konobar  {{ulogovan_konobar.korisnicko_ime}}</div>
+<hr>
+<div class="container"><button (click)="prof()" style="margin-right: 10px;">Profil</button><button (click)="reze()" style="margin-right: 10px;">Rezervacije</button><button (click)="dost()" style="margin-right: 10px;">Dostave</button><button  (click)="stat()">Statistika</button></div>
+
+<div class="container" *ngIf="vrstamenija==h1"><img [src]="imageData" alt="Image" width="160" height="120"></div>
+<div class="container" *ngIf="vrstamenija==h1">
+    <table>
+        <tr>
+            <td>Ime:</td> <td>{{ulogovan_konobar.ime}}</td>
+        </tr>
+        <tr>
+            <td>Prezime:</td> <td>{{ulogovan_konobar.prezime}}</td>
+        </tr>
+        <tr>
+            <td>Adresa:</td> <td>{{ulogovan_konobar.adresa}}</td>
+        </tr>
+        <tr>
+            <td>Mejl:</td> <td>{{ulogovan_konobar.mejl}}</td>
+        </tr>
+        <tr>
+            <td>BKK:</td> <td>{{ulogovan_konobar.broj_kkartice}}</td>
+        </tr>
+    </table>
+</div>
+<pre>
+
+</pre>
+<div class="container" *ngIf="vrstamenija==h1">
+    <button (click)="azurirajpodatke()">Azuriraj podatle</button>
+</div>
+<div class="container" *ngIf="vrstamenija==h2">Rezervacije</div>
+<pre>
+</pre>
+<div class="container" *ngIf="vrstamenija==h2">
+    <table border="1">
+        <th>Gost</th> <th>Sto</th> <th>Broj osoba</th> <th>Datum</th> <th>Status</th>
+        <tr *ngFor="let x of rezervacije">
+            <td>{{x.id_gost}}</td> <td>{{x.broj_stola}}</td> <td>{{x.broj_osoba}}</td> <td>{{parsiraj(x.datum)}}</td> <td>{{x.status}}</td> <td><button (click)="produzi(x)" [disabled]="mozesdaproduzis(x)">Produzi</button></td> <td><button (click)="obradi(x)" [disabled]="x.status!=he">Obradi</button></td> <td><button [disabled]="proslopolasata(x)" (click)="dosao(x)" >Dosao</button></td>
+             <td><button (click)="nijedosao(x)"[disabled]="proslopolasata(x)"> Nije dosao</button></td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="container" *ngIf="vrstamenija==h3">Dostave</div>
+<pre>
+</pre>
+<div class="container" *ngIf="vrstamenija==h3 && dostave.length>0">
+    <table border="1">
+        <th>Gost</th> <th>Iznos</th>  <th>Adresa</th>
+        <tr *ngFor="let x of dostave">
+            <td>{{x.id_gost}}</td> <td>{{x.iznos}}</td> <td>{{x.adresa}}</td> <td><select [(ngModel)]="x.vremedostave"><option>20-30</option><option>30-40</option><option>50-60</option></select></td> <td><button (click)="potvrdidostavu(x)">Potvrdi</button></td> <td><button (click)="odbijdostavu(x)">Odbij</button></td>
+             
+        </tr>
+    </table>
+</div>
+<div class="container" *ngIf="vrstamenija==h3 && dostave.length==0" style="color: green; font-size: larger;">Nema dostava</div>
+
+<div class="container"><canvas #barChartCanvas height="1300" width="700"></canvas></div>
+
+<!--div class="container" *ngIf="vrstamenija==h4">Cao
+    <canvas #barChartCanvas width="400" height="300"></canvas>
+</div-->
+
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<hr>
+<div class="container"><button (click)="pocetna()" style="margin-right: 10px;">Pocetna</button><button (click)="izlogujse()">Izloguj se</button></div>
